@@ -61,7 +61,7 @@ namespace ProductApi.Daos
             }
         }
 
-        public void UpdateFields(int id, ProductUpdateRequestDto product)
+        public int UpdateFields(int id, ProductUpdateRequestDto product)
         {
             using (var connection = new MySqlConnection(_connectionString))
             {
@@ -100,6 +100,7 @@ namespace ProductApi.Daos
                         command.ExecuteNonQuery();
                     }
                 }
+                return id;
             }
         }
 

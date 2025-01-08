@@ -25,10 +25,10 @@ namespace ProductApi.Services
             return _productDao.UpdateProduct(id, product);
         }
 
-        public void UpdateFields(int id, ProductUpdateRequestDto product)
+        public int UpdateFields(int id, ProductUpdateRequestDto product)
         {
             GetExistingProductById(id);
-            _productDao.UpdateFields(id, product);
+            return _productDao.UpdateFields(id, product);
         }
 
         public List<ProductResponseDto> GetAllProducts()
