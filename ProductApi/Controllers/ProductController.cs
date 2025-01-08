@@ -52,9 +52,15 @@ namespace ProductApi.Controllers
         {
             try
             {
-                _productService.GetById(id);
-                _productService.UpdateFields(id, product);
-                return NoContent();
+
+                int productId = _productService.UpdateFields(id, product);
+                var updateProduct = _productService.GetById(id);
+
+                return Ok(new
+                {
+                    productId = updateProduct,
+                    location = Url.Action(nameof(GetById), new { id = updateProduct.Id })
+                });
             }
             catch (NotFoundException ex)
             {
